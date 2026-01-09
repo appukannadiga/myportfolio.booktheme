@@ -1,51 +1,53 @@
 import React from "react";
-import { AiFillLayout } from "react-icons/ai";
-import { MdOutlinePhoneAndroid } from "react-icons/md";
-import { HiMiniComputerDesktop } from "react-icons/hi2";
-import { SiReact } from "react-icons/si";
+import { FaCode, FaMobileAlt, FaPalette, FaServer } from "react-icons/fa"; // Updated icons for consistency
 
 const ServicesData = [
   {
-    name: "UI Development",
-    description: "Creating beautiful, responsive user interfaces",
-    icon: <AiFillLayout className="text-4xl" />,
-    bgColor: "bg-blue-500/70",
-  },
-  {
-    name: "Mobile App Development",
-    description: "Flutter & React Native applications",
-    icon: <MdOutlinePhoneAndroid className="text-4xl" />,
-    bgColor: "bg-lime-500/70",
-  },
-  {
     name: "Web Development",
-    description: "Modern web apps with React & Next.js",
-    icon: <HiMiniComputerDesktop className="text-4xl" />,
-    bgColor: "bg-fuchsia-500/70",
+    description: "Building responsive, modern websites with React and Next.js.",
+    icon: <FaCode className="text-3xl" />,
+    bgColor: "from-blue-400 to-blue-600",
   },
   {
-    name: "Full Stack Development",
-    description: "End-to-end application development",
-    icon: <SiReact className="text-4xl" />,
-    bgColor: "bg-orange-500/70",
+    name: "App Development",
+    description: "Creating cross-platform mobile apps using Flutter and React Native.",
+    icon: <FaMobileAlt className="text-3xl" />,
+    bgColor: "from-lime-400 to-lime-600",
+  },
+  {
+    name: "UI/UX Design",
+    description: "Designing intuitive and aesthetic user interfaces for web and mobile.",
+    icon: <FaPalette className="text-3xl" />,
+    bgColor: "from-fuchsia-400 to-fuchsia-600",
+  },
+  {
+    name: "Backend",
+    description: "Developing robust APIs and database architectures with Node.js.",
+    icon: <FaServer className="text-3xl" />,
+    bgColor: "from-orange-400 to-orange-600",
   },
 ];
+
 const ServicesBox = () => {
   return (
-    <div className="h-full mt-10 text-white">
-      <div className="grid grid-cols-2 gap-6">
-        {ServicesData.map(({ name, description, icon, bgColor }, index) => (
-          <div key={index} className={`p-3 ${bgColor} min-h-[180px] rounded-xl`}>
-            <div className="p-3 space-y-3">
-              {icon}
-              <h1>{name}</h1>
-              <p>{description}</p>
-            </div>
+    <div className="grid grid-cols-2 gap-4 md:gap-6 h-full content-center pb-8 p-1">
+      {ServicesData.map(({ name, description, icon, bgColor }, index) => (
+        <div
+          key={index}
+          className="group bg-white/50 backdrop-blur-sm rounded-xl p-4 md:p-6 shadow-lg border border-white/60 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center"
+        >
+          <div className={`p-4 rounded-full text-white mb-4 bg-gradient-to-br ${bgColor} shadow-md group-hover:scale-110 transition-transform duration-300`}>
+            {icon}
           </div>
-        ))}
-      </div>
+          <h1 className="text-sm md:text-base font-bold font-heading mb-2 text-slate-800">{name}</h1>
+          <p className="text-slate-500 text-[10px] md:text-xs leading-relaxed">
+            {description}
+          </p>
+        </div>
+      ))}
     </div>
   );
 };
 
 export default ServicesBox;
+

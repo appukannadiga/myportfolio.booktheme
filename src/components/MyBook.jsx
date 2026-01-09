@@ -45,38 +45,66 @@ const ProjectData2 = [
 ];
 
 function MyBook(props) {
-  const [dimensions, setDimensions] = useState({ width: 600, height: 700 });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const updateDimensions = () => {
-      const width = window.innerWidth;
-
-      if (width < 480) {
-        // Mobile phones
-        setDimensions({ width: Math.min(width - 40, 300), height: 400 });
-      } else if (width < 768) {
-        // Tablets portrait
-        setDimensions({ width: Math.min(width - 60, 450), height: 550 });
-      } else if (width < 1024) {
-        // Tablets landscape
-        setDimensions({ width: 500, height: 600 });
-      } else {
-        // Desktop
-        setDimensions({ width: 600, height: 700 });
-      }
+    const handleResize = () => {
+      // Switch to single page mode (portrait) on smaller screens
+      setIsMobile(window.innerWidth < 850);
     };
 
-    updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Dimensions
+  // Mobile: Maximize width within safe bounds. 
+  // We want to be as large as possible without overflowing horizontally.
+
+  // Dynamic calculation
+  const getDimensions = () => {
+    if (isMobile) {
+      // Mobile Portrait Mode (Single Page)
+      // Aim for nearly full width (window width - margins)
+      // Height should be proportional or fit available height
+      const w = window.innerWidth - 20; // 10px margin each side
+      const h = window.innerHeight - 40; // 20px margin top/bottom
+
+      // Cap max size to avoid looking absurd on tablets treated as mobile
+      return {
+        width: Math.min(w, 550),
+        height: Math.min(h, 700)
+      };
+    }
+    // Desktop Landscape (Double Page)
+    return { width: 550, height: 700 };
+  };
+
+  const dim = getDimensions();
 
   return (
     <HTMLFlipBook
-      width={dimensions.width}
-      height={dimensions.height}
+      width={dim.width}
+      height={dim.height}
+      size="fixed"
+      minWidth={300}
+      maxWidth={1000}
+      minHeight={400}
+      maxHeight={1533}
+
       showCover={true}
+      usePortrait={isMobile}
+      flippingTime={1000}
       className="shadow-2xl"
+      startZIndex={0}
+      autoSize={true}
+      maxShadowOpacity={0.5}
+      showPageCorners={true}
+      disableFlipByClick={false}
+      mobileScrollSupport={true}
+      clickEventForward={true}
+      swipeDistance={30}
     >
       <Page number={1}>
         <Cover coverImg={coverImg} title="Manvanth Gowda M" />
@@ -107,3 +135,4 @@ function MyBook(props) {
 }
 
 export default MyBook;
+

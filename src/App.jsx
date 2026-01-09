@@ -1,22 +1,17 @@
 import React from "react";
 import MyBook from "./components/MyBook";
-import BgTexture from "./assets/brown-wooden-flooring.jpg";
 
-const BgTextureStyle = {
-  backgroundImage: `url(${BgTexture})`,
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  minHeight: "100vh",
-  width: "100%",
-};
 const App = () => {
   return (
-    <div
-      style={BgTextureStyle}
-      className="w-full h-full flex justify-center items-center"
-    >
-      <MyBook />
+    <div className="relative w-full h-screen flex justify-center items-center overflow-hidden bg-slate-900">
+      {/* Premium Luxury Studio Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-black"></div>
+
+      {/* Container for the book */}
+      <div className="relative z-10 w-full h-full flex justify-center items-center p-0 md:p-4">
+        <MyBook />
+      </div>
+
     </div>
   );
 };

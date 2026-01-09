@@ -1,18 +1,14 @@
 import React from "react";
-import ProjectBox from "./ProjectBox.jsx";
-import Heading from "../../HelperComp/Heading.jsx";
+import ProjectBox from "./ProjectBox";
+import Heading from "../../HelperComp/Heading";
 
 const Projects = ({ ProjectData }) => {
   return (
-    <div className="h-full page-shadow bg-white p-10">
-      {/* heading */}
-      <Heading
-        title="Projects"
-        subtitle="Showcase of my recent work and contributions"
-      />
+    <div className="h-full page-shadow bg-slate-50/50 flex flex-col p-4 md:p-10 overflow-hidden">
+      <Heading title="Projects" subtitle="Recent Works" />
 
-      {/* Project section  */}
-      <div>
+
+      <div className="flex-1 w-full flex flex-col justify-center">
         <ProjectBox ProjectData={ProjectData} />
       </div>
     </div>
@@ -20,3 +16,4 @@ const Projects = ({ ProjectData }) => {
 };
 
 export default Projects;
+
