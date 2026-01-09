@@ -9,8 +9,8 @@ const About = () => {
 
 
 
-      <div className="flex-1 flex flex-col justify-center space-y-6 md:space-y-8 relative z-10">
-        <div className="space-y-4 text-center font-medium font-body text-slate-600">
+      <div className="flex-1 flex flex-col justify-center space-y-4 md:space-y-8 relative z-10">
+        <div className="space-y-2 md:space-y-4 text-center font-medium font-body text-slate-600 text-sm md:text-base">
           <p className="leading-relaxed">
             I'm a passionate <span className="text-slate-900 font-bold">Full Stack Developer</span> with a knack for building immersive web and mobile applications.
             My journey began with a curiosity for how things work on the internet, which led me to dive deep into
@@ -23,28 +23,30 @@ const About = () => {
         </div>
 
         {/* Social Links */}
-        <div className="flex justify-center gap-6">
-          <a href="#" className="text-4xl hover:text-primary transition-colors duration-300 hover:scale-110 transform">
+        <div className="flex justify-center gap-4 md:gap-6">
+          <a href="#" className="text-3xl md:text-4xl hover:text-primary transition-colors duration-300 hover:scale-110 transform">
             <AiFillGithub />
           </a>
-          <a href="#" className="text-4xl hover:text-blue-600 transition-colors duration-300 hover:scale-110 transform">
+          <a href="#" className="text-3xl md:text-4xl hover:text-blue-600 transition-colors duration-300 hover:scale-110 transform">
             <AiFillLinkedin />
           </a>
-          <a href="#" className="text-4xl hover:text-pink-600 transition-colors duration-300 hover:scale-110 transform">
+          <a href="#" className="text-3xl md:text-4xl hover:text-pink-600 transition-colors duration-300 hover:scale-110 transform">
             <AiFillInstagram />
           </a>
         </div>
 
         {/* Button container */}
-        <div className="flex justify-center gap-4 pt-4">
-          <a href="#" className="premium-btn shadow-xl text-sm md:text-base">
-            Download Resume
+        <div className="flex justify-center gap-3 md:gap-4 pt-2 md:pt-4">
+          <a href="/Manvanth_Gowda_Resume.html" target="_blank" rel="noopener noreferrer" className="premium-btn shadow-xl text-xs md:text-base px-4 py-2">
+            View Resume
           </a>
-          <a href="mailto:appumanu3214@gmail.com" className="px-6 py-2 border-2 border-slate-300 rounded-full hover:border-primary hover:text-primary font-bold transition-all duration-300 text-slate-600 text-sm md:text-base">
+
+          <a href="mailto:appumanu3214@gmail.com" className="px-4 py-2 border-2 border-slate-300 rounded-full hover:border-primary hover:text-primary font-bold transition-all duration-300 text-slate-600 text-xs md:text-base">
             Contact Me
           </a>
         </div>
       </div>
+
     </div>
   );
 };

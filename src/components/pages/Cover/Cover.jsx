@@ -23,7 +23,8 @@ const Cover = ({ coverImg, title }) => {
             Portfolio
           </p>
           <p className="text-white/60 text-sm mt-8 italic font-serif">
-            2024 Edition
+            NextGenX
+
           </p>
         </div>
       </div>
