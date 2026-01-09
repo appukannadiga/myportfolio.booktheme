@@ -15,8 +15,9 @@ const DesktopToggle = () => {
 
         if (!isDesktopMode) {
             // Switch to Desktop Mode
-            // Force a large width (e.g. 1280px) to simulate desktop
-            metaViewport.setAttribute('content', 'width=1280, initial-scale=0.1');
+            // Using width=1200 allows the browser to scale content naturally without quality loss
+            // Removing initial-scale avoids forcing extreme zoom levels that cause blurriness
+            metaViewport.setAttribute('content', 'width=1200');
             setIsDesktopMode(true);
         } else {
             // Switch back to Mobile Mode
