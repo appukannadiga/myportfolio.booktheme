@@ -15,9 +15,9 @@ const DesktopToggle = () => {
 
         if (!isDesktopMode) {
             // Switch to Desktop Mode
-            // Using width=1200 allows the browser to scale content naturally without quality loss
-            // Removing initial-scale avoids forcing extreme zoom levels that cause blurriness
-            metaViewport.setAttribute('content', 'width=1200');
+            // 1150px fits the book (1100px) + margins perfectly
+            // This maximizes the content size on the mobile screen for better readability
+            metaViewport.setAttribute('content', 'width=1150');
             setIsDesktopMode(true);
         } else {
             // Switch back to Mobile Mode
