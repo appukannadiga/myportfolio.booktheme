@@ -5,25 +5,26 @@ const DesktopToggle = () => {
     const [isDesktopMode, setIsDesktopMode] = useState(false);
 
     useEffect(() => {
-        // Check initial state or previously saved preference if we wanted to add persistence
-        // For now, simpler is better.
+        // Check for saved preference on mount
+        const savedMode = localStorage.getItem('desktop-mode-preference') === 'true';
+        setIsDesktopMode(savedMode);
+
+        // Apply viewport immediately if saved mode is desktop
+        if (savedMode) {
+            const metaViewport = document.querySelector('meta[name="viewport"]');
+            if (metaViewport) {
+                metaViewport.setAttribute('content', 'width=1200');
+            }
+        }
     }, []);
 
     const toggleMode = () => {
-        const metaViewport = document.querySelector('meta[name="viewport"]');
-        if (!metaViewport) return;
+        const newMode = !isDesktopMode;
+        setIsDesktopMode(newMode);
+        localStorage.setItem('desktop-mode-preference', newMode);
 
-        if (!isDesktopMode) {
-            // Switch to Desktop Mode
-            // 1150px fits the book (1100px) + margins perfectly
-            // This maximizes the content size on the mobile screen for better readability
-            metaViewport.setAttribute('content', 'width=1150');
-            setIsDesktopMode(true);
-        } else {
-            // Switch back to Mobile Mode
-            metaViewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
-            setIsDesktopMode(false);
-        }
+        // Force a reload to ensure the browser re-renders everything at the correct scale with crisp quality
+        window.location.reload();
     };
 
     return (
